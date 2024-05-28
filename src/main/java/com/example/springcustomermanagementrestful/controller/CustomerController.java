@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/customers")
+@CrossOrigin("*")
 public class CustomerController {
 
     @Autowired
@@ -19,6 +20,7 @@ public class CustomerController {
 
     @GetMapping
     public ResponseEntity<Iterable<Customer>> findAllCustomer() {
+
         List<Customer> customers = (List<Customer>) iCustomerService.findAll();
         if (customers.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
